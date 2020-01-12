@@ -36,7 +36,7 @@
         android:layout_height="91dp"
         android:background="#458548"
 
-        android:backgroundTint="#8BC34A"
+        android:backgroundTint="#F5F5F5"
         android:backgroundTintMode="src_in"
         android:padding="30sp"
         android:shadowColor="#81A884"
