@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public void mainmenu() {
         setContentView(R.layout.activity_main);
 
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -87,9 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void changeView(){
 
-            setContentView(R.layout.fragment_home);
-            ImageView img = (ImageView) findViewById(R.id.imageActivity);
-            img.setImageResource(R.drawable.chair);
+
+
+       //     setContentView(R.layout.fragment_home);
+          //  ImageView img = (ImageView) findViewById(R.id.imageActivity);
+         //   img.setImageResource(R.drawable.chair);
 
     }
 

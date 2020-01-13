@@ -71,8 +71,8 @@
             app:layout_constraintVertical_bias="0.333" />
 
         <RadioGroup
-            android:layout_width="105dp"
-            android:layout_height="108dp"
+            android:layout_width="273dp"
+            android:layout_height="66dp"
             android:layout_marginBottom="136dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,13 +83,13 @@
 
             <RadioButton
                 android:id="@+id/radioButton3"
-                android:layout_width="match_parent"
+                android:layout_width="109dp"
                 android:layout_height="wrap_content"
                 android:text="Awatar1" />
 
             <RadioButton
                 android:id="@+id/radioButton4"
-                android:layout_width="match_parent"
+                android:layout_width="104dp"
                 android:layout_height="wrap_content"
                 android:text="Awatar2" />
 
