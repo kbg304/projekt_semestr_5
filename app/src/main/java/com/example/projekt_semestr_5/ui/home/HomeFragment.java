@@ -34,8 +34,6 @@ public class HomeFragment extends Fragment {
         });
         return root;
 
-
-
     }
 
 

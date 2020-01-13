@@ -1,5 +1,10 @@
 package com.example.projekt_semestr_5;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.navigation.NavController;
@@ -19,10 +24,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements SensorEventListener {
 
     private AppBarConfiguration mAppBarConfiguration;
 
+    private SensorManager sensorManager;
+    private Sensor accelerometer, gyroscope;
+    private float[] accelometerData, gyroscopeData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         int zmiennapierwszegouruchomienia=0;
+
+        initializeSensors();
 
         if(zmiennapierwszegouruchomienia == 0)
         {
@@ -106,4 +116,54 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
+
+    private void initializeSensors()
+    {
+        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        accelometerData = new float[3];
+        gyroscopeData = new float[3];
+
+    }
+
+    public void startSensorMeasurement()
+    {
+        sensorManager.registerListener(this, accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
+        sensorManager.registerListener(this, gyroscope,SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    public void stopSensorMeasurement()
+    {
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy)
+    {
+
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event)
+    {
+        Sensor sensor = event.sensor;
+
+        if(sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+        {
+            accelometerData[0] = event.values[0];
+            accelometerData[1] = event.values[1];
+            accelometerData[2] = event.values[2];
+        }
+        if(sensor.getType() == Sensor.TYPE_GYROSCOPE)
+        {
+            gyroscopeData[0] = event.values[0];
+            gyroscopeData[1] = event.values[1];
+            gyroscopeData[2] = event.values[2];
+        }
+    }
+
 }
