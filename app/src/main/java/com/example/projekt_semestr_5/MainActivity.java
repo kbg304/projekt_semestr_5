@@ -27,21 +27,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
 
-        // changeView();
-        mainmenu();
+        int zmiennapierwszegouruchomienia=0;
 
+        if(zmiennapierwszegouruchomienia == 0)
+        {
+            firstrun();
+        }
+        else
+        {
+            mainmenu();
+        }
 
-        /*
-        Button button = (Button) findViewById(R.id.begin_activ);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainmenu();
-            }
-        });*/
 
     }
     public void mainmenu() {
@@ -72,7 +70,19 @@ public class MainActivity extends AppCompatActivity {
 
         //  ImageView img = (ImageView) findViewById(R.id.imageActivity);
         //  img.setImageResource(R.drawable.chair);
-        //changeView();
+
+    }
+
+    public void firstrun(){
+        setContentView(R.layout.startup);
+        Button button = (Button) findViewById(R.id.button_firstrun);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainmenu();
+            }
+        });
+
     }
 
     public void changeView(){
