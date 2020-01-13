@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -39,16 +38,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         ImageView img = (ImageView) v.findViewById(R.id.imageActivity);
         img.setImageResource(R.drawable.walk);
 
-            button = (Button) v.findViewById(R.id.begin_activ);
-            return v;
+        button = (Button) inflater.inflate(R.layout.fragment_home, container, false).findViewById(R.id.begin_activ);
+        button.setOnClickListener(this);
+
+
+         //   button = (Button) v.findViewById(R.id.begin_activ);
+         //   button.setOnClickListener(new View.OnClickListener() {
+          //      @Override
+          //      public void onClick(View v) {
+          //          ImageView img = (ImageView)v.findViewById(R.id.imageActivity);
+          //          img.setImageResource(R.drawable.chair);
+           //     }
+          //  });;
+
+
+
+        return v;
     }
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
-        Toast.makeText(getActivity(),
-                "Yes",
-                Toast.LENGTH_SHORT).show();
-
+        ImageView img = (ImageView)v.findViewById(R.id.imageActivity);
+        img.setImageResource(R.drawable.chair);
     }
 
 
