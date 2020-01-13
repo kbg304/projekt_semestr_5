@@ -27,9 +27,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         super.onCreate(savedInstanceState);
 
-        int zmiennapierwszegouruchomienia=0;
+
+        int zmiennapierwszegouruchomienia=1;
 
         if(zmiennapierwszegouruchomienia == 0)
         {
