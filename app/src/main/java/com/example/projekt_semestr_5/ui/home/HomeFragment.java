@@ -40,14 +40,14 @@ public class HomeFragment extends Fragment  {
         ImageView img = (ImageView) v.findViewById(R.id.imageActivity);
         img.setImageResource(R.drawable.walk);
         button = (Button) v.findViewById(R.id.begin_activ);
-        
+
 
 
            button.setOnClickListener(new View.OnClickListener() {
                @Override
                 public void onClick(View v) {
                    Toast.makeText(getActivity(),
-                           "Kamil jest słaby",
+                           "Test",
                            Toast.LENGTH_SHORT).show();
                 }
            });
