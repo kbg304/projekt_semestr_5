@@ -35,9 +35,11 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         super.onCreate(savedInstanceState);
 
-        int zmiennapierwszegouruchomienia=0;
+
+        int zmiennapierwszegouruchomienia=1;
 
         initializeSensors();
 
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     }
     public void mainmenu() {
         setContentView(R.layout.activity_main);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -97,9 +100,11 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
     public void changeView(){
 
-            setContentView(R.layout.fragment_home);
-            ImageView img = (ImageView) findViewById(R.id.imageActivity);
-            img.setImageResource(R.drawable.chair);
+
+
+       //     setContentView(R.layout.fragment_home);
+          //  ImageView img = (ImageView) findViewById(R.id.imageActivity);
+         //   img.setImageResource(R.drawable.chair);
 
     }
 

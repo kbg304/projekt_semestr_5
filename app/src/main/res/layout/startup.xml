@@ -50,12 +50,13 @@
             android:id="@+id/editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="108dp"
+            android:layout_marginBottom="180dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Nazwa użytkownika"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -65,32 +66,33 @@
             android:text="Potwierdź"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText"
-            app:layout_constraintVertical_bias="0.333" />
+            app:layout_constraintVertical_bias="0.522" />
 
         <RadioGroup
-            android:layout_width="117dp"
-            android:layout_height="67dp"
+            android:layout_width="315dp"
+            android:layout_height="79dp"
             android:layout_marginBottom="136dp"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.163"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
-            app:layout_constraintVertical_bias="0.9">
+            app:layout_constraintVertical_bias="0.646">
 
             <RadioButton
                 android:id="@+id/radioButton3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="159dp"
+                android:layout_height="43dp"
                 android:text="Awatar1" />
 
             <RadioButton
                 android:id="@+id/radioButton4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="156dp"
+                android:layout_height="42dp"
                 android:text="Awatar2" />
 
         </RadioGroup>
@@ -118,25 +120,19 @@
             app:layout_constraintVertical_bias="0.174"
             app:srcCompat="@drawable/userfemale" />
 
-        <TextView
-            android:id="@+id/textView6"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Awatar1"
-            app:layout_constraintBottom_toTopOf="@+id/imageView3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.243"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
 
-        <TextView
-            android:id="@+id/textView7"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Awatar2"
-            app:layout_constraintBottom_toTopOf="@+id/imageView4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.756"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
