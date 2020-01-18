@@ -33,6 +33,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 
 public class MainActivity extends AppCompatActivity  implements SensorEventListener {
 
@@ -44,6 +46,8 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
     private Button button;
     private Button button2;
+
+    private File mlModelFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,8 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         {
             mainmenu();
         }
+
+
 
         button = (Button) findViewById(R.id.begin_activ);
         button2 = (Button) findViewById(R.id.end_activ);
