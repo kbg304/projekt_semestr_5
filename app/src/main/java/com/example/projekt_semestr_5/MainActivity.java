@@ -1,5 +1,6 @@
 package com.example.projekt_semestr_5;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -31,14 +33,13 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private Button button;
     private Button button2;
+    private ImageButton button3;
+    private ImageButton button4;
+    public String zmienna ="Wszystkie twoje aktywności w przeciągu 7 dni";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
-
-
         int zmiennapierwszegouruchomienia=1;
 
         if(zmiennapierwszegouruchomienia == 0)
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
         button = (Button) findViewById(R.id.begin_activ);
         button2 = (Button) findViewById(R.id.end_activ);
+        button3 = (ImageButton) findViewById(R.id.ButtonAchivments);
+        button4 = (ImageButton) findViewById(R.id.ButtonStats);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 toastTV.setTextColor(Color.RED);
                 toast.show();
                // if(button.getVisibility()==View.INVISIBLE)
-
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +86,23 @@ public class MainActivity extends AppCompatActivity {
                 toastTV.setTextColor(Color.RED);
                 toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
                 toast.show();
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getBaseContext(), AchivActivity.class);
+                startActivity(intent);
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getBaseContext(), StatisticActivity.class);
+                intent.putExtra("Zmienna", zmienna);
+                startActivity(intent);
             }
         });
 
