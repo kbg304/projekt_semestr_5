@@ -13,6 +13,7 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    <string name="kamil">Kamil to pedal</string>
+    <string name="kamil">Witam kamila naszego producenta</string>
     <string name="begin_activ">Rozpocznij pomiar</string>
+    <string name="end_activ">Zakoncz pomiar</string>
 </resources>

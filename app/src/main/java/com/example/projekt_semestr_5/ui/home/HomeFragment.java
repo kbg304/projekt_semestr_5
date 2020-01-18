@@ -37,9 +37,9 @@ public class HomeFragment extends Fragment  {
                 textView.setText(s);
             }
         });
-        ImageView img = (ImageView) v.findViewById(R.id.imageActivity);
-        img.setImageResource(R.drawable.walk);
-        button = (Button) v.findViewById(R.id.begin_activ);
+      //  ImageView img = (ImageView) v.findViewById(R.id.imageActivity);
+      //  img.setImageResource(R.drawable.walk);
+      //  button = (Button) v.findViewById(R.id.begin_activ);
 
       //  button = (Button) inflater.inflate(R.layout.fragment_home, container, false).findViewById(R.id.begin_activ);
        // button.setOnClickListener(this);
@@ -51,14 +51,15 @@ public class HomeFragment extends Fragment  {
 
 
 
-           button.setOnClickListener(new View.OnClickListener() {
-               @Override
-                public void onClick(View v) {
-                   Toast.makeText(getActivity(),
-                           "Kamil jest słaby",
-                           Toast.LENGTH_SHORT).show();
-                }
-           });
+       //    button.setOnClickListener(new View.OnClickListener() {
+        //       @Override
+        //        public void onClick(View v) {
+
+                //   Toast.makeText(getActivity(),
+                //          "Kamil jest słaby",
+                //          Toast.LENGTH_SHORT).show();
+          //      }
+         //  });
 
 
 
