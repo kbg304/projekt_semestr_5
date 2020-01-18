@@ -1,10 +1,15 @@
 package com.example.projekt_semestr_5;
 
+
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+
 import android.os.Bundle;
 
 import androidx.navigation.NavController;
@@ -23,6 +28,11 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity  implements SensorEventListener {
 
@@ -31,6 +41,9 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     private SensorManager sensorManager;
     private Sensor accelerometer, gyroscope;
     private float[] accelometerData, gyroscopeData;
+
+    private Button button;
+    private Button button2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +64,43 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         {
             mainmenu();
         }
+
+        button = (Button) findViewById(R.id.begin_activ);
+        button2 = (Button) findViewById(R.id.end_activ);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView img = (ImageView) findViewById(R.id.imageActivity);
+                img.setImageResource(R.drawable.chair);
+                button.setVisibility(View.INVISIBLE);
+                button2.setVisibility(View.VISIBLE);
+                Toast toast = Toast.makeText(getApplicationContext(), "ROZPOCZĘTO DZIAŁANIE PROGRAMU ", Toast.LENGTH_SHORT);
+                LinearLayout toastLayout = (LinearLayout) toast.getView();
+                TextView toastTV = (TextView) toastLayout.getChildAt(0);
+                toastTV.setTextSize(20);
+                toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
+                toastTV.setTextColor(Color.RED);
+                toast.show();
+               // if(button.getVisibility()==View.INVISIBLE)
+
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView img = (ImageView) findViewById(R.id.imageActivity);
+                img.setImageResource(R.drawable.walk);
+                button.setVisibility(View.VISIBLE);
+                button2.setVisibility(View.INVISIBLE);
+                Toast toast = Toast.makeText(getApplicationContext(), "ZAKOŃCZONO DZIAŁANIE PROGRAMU", Toast.LENGTH_SHORT);
+                LinearLayout toastLayout = (LinearLayout) toast.getView();
+                TextView toastTV = (TextView) toastLayout.getChildAt(0);
+                toastTV.setTextSize(20);
+                toastTV.setTextColor(Color.RED);
+                toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
+                toast.show();
+            }
+        });
 
 
     }
@@ -107,6 +157,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
          //   img.setImageResource(R.drawable.chair);
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

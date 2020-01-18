@@ -13,9 +13,65 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
+
+    <Button
+        android:id="@+id/begin_activ"
+        android:layout_width="414dp"
+        android:layout_height="106dp"
+        android:background="#458548"
+
+        android:backgroundTint="#F5F5F5"
+        android:backgroundTintMode="src_in"
+        android:padding="30sp"
+        android:shadowDx="20"
+        android:shadowDy="30"
+        android:shadowRadius="5"
+        android:text="@string/begin_activ"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_home"
+        app:layout_constraintVertical_bias="1" />
+
+    <Button
+        android:id="@+id/end_activ"
+        android:layout_width="414dp"
+        android:layout_height="106dp"
+
+        android:background="#458548"
+        android:backgroundTint="#F5F5F5"
+        android:backgroundTintMode="src_in"
+        android:padding="30sp"
+        android:shadowDx="20"
+        android:shadowDy="30"
+        android:shadowRadius="5"
+        android:text="@string/end_activ"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_home"
+        app:layout_constraintVertical_bias="1" />
+
+    <ImageView
+        android:id="@+id/imageActivity"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_home"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/run" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
