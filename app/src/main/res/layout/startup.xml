@@ -19,7 +19,7 @@
             app:srcCompat="@color/colorPrimary" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView7"
             android:layout_width="347dp"
             android:layout_height="74dp"
             android:fontFamily="serif"
@@ -34,7 +34,7 @@
             app:layout_constraintVertical_bias="0.023" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pierwsze uruchomienie, wybierz avatara i podaj nazwe użytkownika"
