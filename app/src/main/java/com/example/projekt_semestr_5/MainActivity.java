@@ -2,6 +2,7 @@ package com.example.projekt_semestr_5;
 
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -24,6 +25,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.Layout;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +36,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity  implements SensorEventListener {
@@ -47,7 +50,6 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     private Button button;
     private Button button2;
 
-    private File mlModelFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +70,6 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         {
             mainmenu();
         }
-
 
 
         button = (Button) findViewById(R.id.begin_activ);
