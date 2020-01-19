@@ -5,6 +5,7 @@ import android.content.Intent;
 
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -17,6 +18,7 @@ import android.graphics.PorterDuff;
 
 import android.os.Bundle;
 
+import androidx.core.content.res.TypedArrayUtils;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -30,6 +32,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.text.Layout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -40,8 +43,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
+import org.tensorflow.lite.Interpreter;
+
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity  implements SensorEventListener {
@@ -50,14 +58,16 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
     private SensorManager sensorManager;
     private Sensor accelerometer, gyroscope;
-    private float[] accelometerData, gyroscopeData;
+    private float[] accelometerData, gyroscopeData, preparedData;
 
     private Button button;
     private Button button2;
     private ImageButton button3;
     private ImageButton button4;
     public String zmienna ="Wszystkie twoje aktywności w przeciągu 7 dni";
+    private String modelFilename = "activity_ml_model.tflite";
 
+    MachineLearning machineLearning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +84,9 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         {
             mainmenu();
         }
+
+        openMLModel();
+
 
 
         button = (Button) findViewById(R.id.begin_activ);
@@ -249,6 +262,58 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
             gyroscopeData[1] = event.values[1];
             gyroscopeData[2] = event.values[2];
         }
+
+
     }
 
+    private void openMLModel()
+    {
+        try
+        {
+
+            //float[] test = new float[]{-0.051475335f, 9.563639f, 0.2669535f, -0.007078074f, 0.01732998f, 0.11274448f};
+
+
+            MappedByteBuffer model = loadModelFile(getAssets(), modelFilename);
+
+            machineLearning = new MachineLearning(model);
+
+            //int prediction = machineLearning.getPrediction(test);
+
+           // Log.d("wynik", Integer.toString(prediction));
+
+        }
+        catch (Exception ex)
+        {
+            Log.e("blad","Nie zaladowano modelu");
+            Log.e("blad",ex.getMessage());
+        }
+    }
+
+    private static MappedByteBuffer loadModelFile(AssetManager assets, String modelFilename)
+            throws IOException {
+        AssetFileDescriptor fileDescriptor = assets.openFd(modelFilename);
+        FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
+        FileChannel fileChannel = inputStream.getChannel();
+        long startOffset = fileDescriptor.getStartOffset();
+        long declaredLength = fileDescriptor.getDeclaredLength();
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
+    }
+
+    private float[] prepareData()
+    {
+        float[] data = new float[6];
+
+        for(int i=0; i<3; i++)
+    {
+        data[i] = accelometerData[i];
+    }
+
+        for(int j=3; j<6; j++)
+        {
+            data[j] = gyroscopeData[j-3];
+        }
+
+        return data;
+    }
 }
