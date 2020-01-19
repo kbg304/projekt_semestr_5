@@ -37,31 +37,6 @@ public class HomeFragment extends Fragment  {
                 textView.setText(s);
             }
         });
-      //  ImageView img = (ImageView) v.findViewById(R.id.imageActivity);
-      //  img.setImageResource(R.drawable.walk);
-      //  button = (Button) v.findViewById(R.id.begin_activ);
-
-      //  button = (Button) inflater.inflate(R.layout.fragment_home, container, false).findViewById(R.id.begin_activ);
-       // button.setOnClickListener(this);
-
-       // String menu = getArguments().getString("Menu");
-
-       // button.setText(menu);
-
-
-
-
-       //    button.setOnClickListener(new View.OnClickListener() {
-        //       @Override
-        //        public void onClick(View v) {
-
-                //   Toast.makeText(getActivity(),
-                //          "Kamil jest słaby",
-                //          Toast.LENGTH_SHORT).show();
-          //      }
-         //  });
-
-
 
         return v;
     }
