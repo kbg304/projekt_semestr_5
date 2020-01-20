@@ -12,7 +12,7 @@
         android:layout_width="312dp"
         android:layout_height="81dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="30"
         android:alpha=".1"
         android:background="@color/colorPrimary"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="52dp"
-            android:text="Biegaj 150minut w diagu dnia"
+            android:text="Biegaj 150minut w ciagu dnia"
             android:textAlignment="center"
             android:textColor="#FFFFFFFF"
             android:textSize="16sp" />
@@ -41,45 +41,6 @@
             android:layout_marginStart="70dp"
             android:fontFamily="sans-serif-black"
             android:text="MARATOŃCZYK"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/nolife"
-        android:layout_width="312dp"
-        android:layout_height="81dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="26dp"
-        android:layout_weight="30"
-        android:alpha=".1"
-        android:background="@color/colorPrimary"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Maratończyk">
-
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="98dp"
-            android:layout_marginTop="52dp"
-            android:text="Siedź 12 godzin"
-            android:textAlignment="center"
-            android:textColor="#FFFFFFFF"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="110dp"
-            android:fontFamily="sans-serif-black"
-            android:text="NO-LIFE"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
@@ -128,7 +89,7 @@
         android:layout_width="312dp"
         android:layout_height="81dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="30"
         android:alpha=".1"
         android:background="@color/colorPrimary"
@@ -167,23 +128,23 @@
         android:layout_width="312dp"
         android:layout_height="81dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="30"
         android:alpha=".1"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pierwszeKroki">
+        app:layout_constraintTop_toBottomOf="@+id/nolife">
 
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="52dp"
-            android:text="24h bez aktywności"
+            android:text="Przesiedź cały weekend"
             android:textColor="#FFFFFFFF"
             android:textSize="16sp" />
 
@@ -208,5 +169,43 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/nolife"
+        android:layout_width="312dp"
+        android:layout_height="81dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_weight="30"
+        android:alpha=".1"
+        android:background="@color/colorPrimary"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pierwszeKroki">
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="98dp"
+            android:layout_marginTop="52dp"
+            android:text="Siedź 12 godzin"
+            android:textAlignment="center"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="110dp"
+            android:fontFamily="sans-serif-black"
+            android:text="NO-LIFE"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
