@@ -1,21 +1,13 @@
 package com.example.projekt_semestr_5;
 
-import org.tensorflow.Graph;
-import org.tensorflow.Session;
-import org.tensorflow.Tensor;
-import org.tensorflow.TensorFlow;
 import org.tensorflow.lite.Interpreter;
-
-import java.io.File;
 import java.nio.MappedByteBuffer;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class MachineLearning
 {
     private Interpreter tflite;
 
-    private String[] labels = {"siedzenie", "stanie", "chodzenie", "bieganie"};
 
     public MachineLearning(MappedByteBuffer file)
     {
@@ -27,7 +19,6 @@ public class MachineLearning
         float[][] output = new float[1][4];
 
         tflite.run(data, output);
-        tflite.close();
 
         return output;
     }
@@ -57,6 +48,11 @@ public class MachineLearning
 
         return index;
 
+    }
+
+    public void closeInterpreter()
+    {
+        tflite.close();
     }
 
 }
