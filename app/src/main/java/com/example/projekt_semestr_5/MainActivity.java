@@ -326,8 +326,55 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
     private void saveTime()
     {
+        double sitting, standing, walking, running;
 
+        if(fileManager.open("sitting") == "")
+        {
+            sitting = activityTime[0] * 2.7e-7;
+            fileManager.save("sitting", Double.toString(sitting));
+        }
+        else
+        {
+            sitting = Double.parseDouble(fileManager.open("sitting"));
+            sitting += (activityTime[0] * 2.7e-7);
+            fileManager.save("sitting", Double.toString(sitting));
+        }
 
+        if(fileManager.open("standing") == "")
+        {
+            standing = activityTime[1] * 2.7e-7;
+            fileManager.save("standing", Double.toString(standing));
+        }
+        else
+        {
+            standing = Double.parseDouble(fileManager.open("standing"));
+            standing += (activityTime[1] * 2.7e-7);
+            fileManager.save("standing", Double.toString(standing));
+        }
+
+        if(fileManager.open("walking") == "")
+        {
+            walking = activityTime[2] * 2.7e-7;
+            fileManager.save("walking", Double.toString(walking));
+        }
+        else
+        {
+            walking = Double.parseDouble(fileManager.open("walking"));
+            walking += (activityTime[2] * 2.7e-7);
+            fileManager.save("walking", Double.toString(walking));
+        }
+
+        if(fileManager.open("running") == "")
+        {
+            running = activityTime[3] * 2.7e-7;
+            fileManager.save("running", Double.toString(running));
+        }
+        else
+        {
+            running = Double.parseDouble(fileManager.open("running"));
+            running += (activityTime[3] * 2.7e-7);
+            fileManager.save("running", Double.toString(running));
+        }
 
     }
 }
