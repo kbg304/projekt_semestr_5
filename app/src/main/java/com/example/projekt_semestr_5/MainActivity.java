@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
                 toastStop();
                 stopSensorMeasurement();
+
                 activityTime[previousActivity] += (System.currentTimeMillis() - startTime);
                 saveTime();
             }
