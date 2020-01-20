@@ -49,8 +49,13 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     private String modelFilename = "activity_ml_model.tflite";
     private String[] labels = {"siedzenie", "stanie", "chodzenie", "bieganie"};
     private int activityPrediction;
+    private int previousActivity=-1;
+
+    private long startTime;
+    private long[] activityTime = new long[4];
 
     MachineLearning machineLearning;
+    FileManager fileManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +63,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
         initializeSensors();
         mainmenu();
-
+        fileManager = new FileManager(getApplicationContext());
         openMLModel();
 
         beginActivButton = findViewById(R.id.begin_activ);
@@ -80,6 +85,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
                 toastStart();
                 startSensorMeasurement();
+                startTime = System.currentTimeMillis();
                // if(button.getVisibility()==View.INVISIBLE)
             }
         });
@@ -98,7 +104,8 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
                 toastStop();
                 stopSensorMeasurement();
-
+                activityTime[previousActivity] += (System.currentTimeMillis() - startTime);
+                saveTime();
             }
         });
 
@@ -279,6 +286,17 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     {
         activityPrediction = machineLearning.getPrediction(preparedData);
 
+        if(previousActivity == -1)
+        {
+            previousActivity = activityPrediction;
+        }
+        if(previousActivity != activityPrediction)
+        {
+            activityTime[previousActivity] += (System.currentTimeMillis() - startTime);
+            startTime = System.currentTimeMillis();
+            previousActivity = activityPrediction;
+        }
+
         if(activityPrediction>=0 && activityPrediction <4)
         {
             textActivity.setText(labels[activityPrediction]);
@@ -305,4 +323,10 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         }
     }
 
+    private void saveTime()
+    {
+
+
+
+    }
 }
