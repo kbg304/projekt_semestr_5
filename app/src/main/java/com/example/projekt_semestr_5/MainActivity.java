@@ -21,7 +21,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
@@ -56,8 +60,6 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         mainmenu();
 
         openMLModel();
-
-
 
         beginActivButton = findViewById(R.id.begin_activ);
         endActivButton = findViewById(R.id.end_activ);
