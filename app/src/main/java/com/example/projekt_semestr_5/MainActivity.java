@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
             }
         });
+
         achivButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,6 +145,13 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         toastTV.setTextColor(Color.RED);
         toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
         toast.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        // your code.
+        stopSensorMeasurement();
+        finish();
     }
 
 
