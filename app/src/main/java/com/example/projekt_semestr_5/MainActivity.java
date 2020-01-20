@@ -66,12 +66,12 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         beginActivButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageView img = findViewById(R.id.imageActivity);
-                img.setImageResource(R.drawable.chair);
+              //  ImageView img = findViewById(R.id.imageActivity);
+              //  img.setImageResource(R.drawable.chair);
 
-                nameActivity ="Tu ma byc juz zapisana aktywnosc";
+              //  nameActivity ="Tu ma byc juz zapisana aktywnosc";
                 textActivity = findViewById(R.id.textActivity);
-                textActivity.setText(nameActivity);
+              //  textActivity.setText(nameActivity);
 
                 beginActivButton.setVisibility(View.INVISIBLE);
                 endActivButton.setVisibility(View.VISIBLE);
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     public void stopSensorMeasurement()
     {
         sensorManager.unregisterListener(this);
-        machineLearning.closeInterpreter();
+       // machineLearning.closeInterpreter();
     }
 
     @Override
