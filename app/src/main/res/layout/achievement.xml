@@ -27,9 +27,9 @@
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="95dp"
             android:layout_marginTop="52dp"
-            android:text="Biegaj 150minut w ciagu dnia"
+            android:text="Biegaj 10 godzin"
             android:textAlignment="center"
             android:textColor="#FFFFFFFF"
             android:textSize="16sp" />
@@ -77,7 +77,7 @@
             android:layout_height="49dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="40dp"
-            android:text="Wykonaj 10minut jakąkolwiek aktywność"
+            android:text="Wykonaj 10minut dowolnej aktywność"
             android:textAlignment="center"
             android:textColor="#FFFFFFFF"
             android:textSize="16sp" />
@@ -104,9 +104,9 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="95dp"
             android:layout_marginTop="52dp"
-            android:text="Biegaj 30minut w ciągu dnia"
+            android:text="Biegaj 3 godziny"
             android:textAlignment="center"
             android:textColor="#FFFFFFFF"
             android:textSize="16sp" />
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
             android:layout_marginTop="52dp"
-            android:text="Przesiedź cały weekend"
+            android:text="Przesiedź cały tydzień"
             android:textColor="#FFFFFFFF"
             android:textSize="16sp" />
 
@@ -191,7 +191,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="98dp"
             android:layout_marginTop="52dp"
-            android:text="Siedź 12 godzin"
+            android:text="Siedź 48 godzin"
             android:textAlignment="center"
             android:textColor="#FFFFFFFF"
             android:textSize="16sp" />

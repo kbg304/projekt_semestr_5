@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MYA</string>
+    <string name="app_name">Moverest</string>
     <string name="main_header">Aplikacja mierząca twój ruch</string>
     <string name="action_settings">Settings</string>
     <string name="begin_activ">Rozpocznij</string>
