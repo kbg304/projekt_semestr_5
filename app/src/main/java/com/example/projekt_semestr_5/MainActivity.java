@@ -5,7 +5,6 @@ import android.content.Intent;
 
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -13,40 +12,27 @@ import android.hardware.SensorManager;
 
 
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 
 import android.os.Bundle;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.text.Layout;
-import android.view.Menu;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity  implements SensorEventListener {
 
-    private AppBarConfiguration mAppBarConfiguration;
 
     private SensorManager sensorManager;
     private Sensor accelerometer, gyroscope;
@@ -69,27 +55,24 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         mainmenu();
 
 
-        beginActivButton = (Button) findViewById(R.id.begin_activ);
-        endActivButton = (Button) findViewById(R.id.end_activ);
-        achivButton = (ImageButton) findViewById(R.id.ButtonAchivments);
-        statsButton = (ImageButton) findViewById(R.id.ButtonStats);
+        beginActivButton = findViewById(R.id.begin_activ);
+        endActivButton = findViewById(R.id.end_activ);
+        achivButton = findViewById(R.id.ButtonAchivments);
+        statsButton = findViewById(R.id.ButtonStats);
         beginActivButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ImageView img = findViewById(R.id.imageActivity);
+                img.setImageResource(R.drawable.chair);
+
+                nameActivity ="Tu ma byc juz zapisana aktywnosc";
                 textActivity = findViewById(R.id.textActivity);
                 textActivity.setText(nameActivity);
-                ImageView img = (ImageView) findViewById(R.id.imageActivity);
-                img.setVisibility(View.VISIBLE);
-                img.setImageResource(R.drawable.chair);
+
                 beginActivButton.setVisibility(View.INVISIBLE);
                 endActivButton.setVisibility(View.VISIBLE);
-                Toast toast = Toast.makeText(getApplicationContext(), "ROZPOCZĘTO DZIAŁANIE PROGRAMU ", Toast.LENGTH_SHORT);
-                LinearLayout toastLayout = (LinearLayout) toast.getView();
-                TextView toastTV = (TextView) toastLayout.getChildAt(0);
-                toastTV.setTextSize(20);
-                toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
-                toastTV.setTextColor(Color.RED);
-                toast.show();
+
+                toastStart();
                 startSensorMeasurement();
                // if(button.getVisibility()==View.INVISIBLE)
             }
@@ -97,21 +80,19 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         endActivButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageView img = (ImageView) findViewById(R.id.imageActivity);
-                img.setVisibility(View.INVISIBLE);
+                ImageView img = findViewById(R.id.imageActivity);
+                img.setImageResource(R.drawable.noactiv);
+
+                nameActivity ="BRAK";
+                textActivity = findViewById(R.id.textActivity);
+                textActivity.setText(nameActivity);
+
                 beginActivButton.setVisibility(View.VISIBLE);
                 endActivButton.setVisibility(View.INVISIBLE);
-                Toast toast = Toast.makeText(getApplicationContext(), "ZAKOŃCZONO DZIAŁANIE PROGRAMU", Toast.LENGTH_SHORT);
-                LinearLayout toastLayout = (LinearLayout) toast.getView();
-                TextView toastTV = (TextView) toastLayout.getChildAt(0);
-                toastTV.setTextSize(20);
-                toastTV.setTextColor(Color.RED);
-                toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
-                toast.show();
+
+                toastStop();
                 stopSensorMeasurement();
-                nameActivity ="BRAK";
-                textActivity = (TextView) findViewById(R.id.textActivity);
-                textActivity.setText(nameActivity);
+
             }
         });
         achivButton.setOnClickListener(new View.OnClickListener() {
@@ -138,20 +119,27 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //  ImageView img = (ImageView) findViewById(R.id.imageActivity);
-        //  img.setImageResource(R.drawable.chair);
-
     }
 
 
-    public void changeView(){
+    public void toastStart(){
+        Toast toast = Toast.makeText(getApplicationContext(), "ROZPOCZĘTO DZIAŁANIE PROGRAMU ", Toast.LENGTH_SHORT);
+        LinearLayout toastLayout = (LinearLayout) toast.getView();
+        TextView toastTV = (TextView) toastLayout.getChildAt(0);
+        toastTV.setTextSize(20);
+        toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
+        toastTV.setTextColor(Color.RED);
+        toast.show();
+    }
 
-
-
-       //     setContentView(R.layout.fragment_home);
-          //  ImageView img = (ImageView) findViewById(R.id.imageActivity);
-         //   img.setImageResource(R.drawable.chair);
-
+    public void toastStop(){
+        Toast toast = Toast.makeText(getApplicationContext(), "ZAKOŃCZONO DZIAŁANIE PROGRAMU", Toast.LENGTH_SHORT);
+        LinearLayout toastLayout = (LinearLayout) toast.getView();
+        TextView toastTV = (TextView) toastLayout.getChildAt(0);
+        toastTV.setTextSize(20);
+        toastTV.setTextColor(Color.RED);
+        toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
+        toast.show();
     }
 
 
