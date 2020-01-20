@@ -20,8 +20,6 @@ public class StatisticActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         setContentView(R.layout.statistics);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {

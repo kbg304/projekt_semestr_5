@@ -52,41 +52,37 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     private Sensor accelerometer, gyroscope;
     private float[] accelometerData, gyroscopeData;
 
-    private Button button;
-    private Button button2;
-    private ImageButton button3;
-    private ImageButton button4;
+    private Button beginActivButton;
+    private Button endActivButton;
+    private ImageButton achivButton;
+    private ImageButton statsButton;
+    private TextView textActivity;
+    private String nameActivity;
     public String zmienna ="Wszystkie twoje aktywności w przeciągu 7 dni";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int zmiennapierwszegouruchomienia=1;
 
         initializeSensors();
-
-        if(zmiennapierwszegouruchomienia == 0)
-        {
-            firstrun();
-        }
-        else
-        {
-            mainmenu();
-        }
+        mainmenu();
 
 
-        button = (Button) findViewById(R.id.begin_activ);
-        button2 = (Button) findViewById(R.id.end_activ);
-        button3 = (ImageButton) findViewById(R.id.ButtonAchivments);
-        button4 = (ImageButton) findViewById(R.id.ButtonStats);
-        button.setOnClickListener(new View.OnClickListener() {
+        beginActivButton = (Button) findViewById(R.id.begin_activ);
+        endActivButton = (Button) findViewById(R.id.end_activ);
+        achivButton = (ImageButton) findViewById(R.id.ButtonAchivments);
+        statsButton = (ImageButton) findViewById(R.id.ButtonStats);
+        beginActivButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textActivity = findViewById(R.id.textActivity);
+                textActivity.setText(nameActivity);
                 ImageView img = (ImageView) findViewById(R.id.imageActivity);
+                img.setVisibility(View.VISIBLE);
                 img.setImageResource(R.drawable.chair);
-                button.setVisibility(View.INVISIBLE);
-                button2.setVisibility(View.VISIBLE);
+                beginActivButton.setVisibility(View.INVISIBLE);
+                endActivButton.setVisibility(View.VISIBLE);
                 Toast toast = Toast.makeText(getApplicationContext(), "ROZPOCZĘTO DZIAŁANIE PROGRAMU ", Toast.LENGTH_SHORT);
                 LinearLayout toastLayout = (LinearLayout) toast.getView();
                 TextView toastTV = (TextView) toastLayout.getChildAt(0);
@@ -94,16 +90,17 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
                 toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
                 toastTV.setTextColor(Color.RED);
                 toast.show();
+                startSensorMeasurement();
                // if(button.getVisibility()==View.INVISIBLE)
             }
         });
-        button2.setOnClickListener(new View.OnClickListener() {
+        endActivButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ImageView img = (ImageView) findViewById(R.id.imageActivity);
-                img.setImageResource(R.drawable.walk);
-                button.setVisibility(View.VISIBLE);
-                button2.setVisibility(View.INVISIBLE);
+                img.setVisibility(View.INVISIBLE);
+                beginActivButton.setVisibility(View.VISIBLE);
+                endActivButton.setVisibility(View.INVISIBLE);
                 Toast toast = Toast.makeText(getApplicationContext(), "ZAKOŃCZONO DZIAŁANIE PROGRAMU", Toast.LENGTH_SHORT);
                 LinearLayout toastLayout = (LinearLayout) toast.getView();
                 TextView toastTV = (TextView) toastLayout.getChildAt(0);
@@ -111,9 +108,13 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
                 toastTV.setTextColor(Color.RED);
                 toastTV.setTextAlignment(toastTV.TEXT_ALIGNMENT_CENTER);
                 toast.show();
+                stopSensorMeasurement();
+                nameActivity ="BRAK";
+                textActivity = (TextView) findViewById(R.id.textActivity);
+                textActivity.setText(nameActivity);
             }
         });
-        button3.setOnClickListener(new View.OnClickListener() {
+        achivButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
                 startActivity(intent);
             }
         });
-        button4.setOnClickListener(new View.OnClickListener() {
+        statsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -135,47 +136,13 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     }
     public void mainmenu() {
         setContentView(R.layout.activity_main);
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-
-
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-
-
         //  ImageView img = (ImageView) findViewById(R.id.imageActivity);
         //  img.setImageResource(R.drawable.chair);
 
     }
 
-    public void firstrun(){
-        setContentView(R.layout.startup);
-        Button button = (Button) findViewById(R.id.button_firstrun);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mainmenu();
-            }
-        });
-
-    }
 
     public void changeView(){
 
@@ -188,19 +155,19 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+  //  @Override
+  //  public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+       // getMenuInflater().inflate(R.menu.main, menu);
+   //     return true;
+   // }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
+  //  @Override
+   // public boolean onSupportNavigateUp() {
+       // NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+      //  return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+       //         || super.onSupportNavigateUp();
+   // }
 
 
 
