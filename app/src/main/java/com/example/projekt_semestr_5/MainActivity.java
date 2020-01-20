@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     private ImageButton statsButton;
     private TextView textActivity;
     private String nameActivity;
-    public String zmienna ="Wszystkie twoje aktywności w przeciągu 7 dni";
+    public String zmienna ="Wszystkie twoje aktywności";
     private String modelFilename = "activity_ml_model.tflite";
     private String[] labels = {"siedzenie", "stanie", "chodzenie", "bieganie"};
     private int activityPrediction;
