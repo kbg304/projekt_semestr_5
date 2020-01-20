@@ -19,9 +19,9 @@ public class FileManager
     {
         try {
             FileOutputStream fileOutputStream = ctx.openFileOutput(filename, ctx.MODE_PRIVATE);
-            fileOutputStream.write("data".getBytes());
+            fileOutputStream.write(data.getBytes());
             fileOutputStream.close();
-            File file = new File(ctx.getFilesDir(), "test");
+            File file = new File(ctx.getFilesDir(), filename);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,7 +31,7 @@ public class FileManager
     {
         String temp = "";
         try {
-            FileInputStream fileInputStream = ctx.openFileInput("test");
+            FileInputStream fileInputStream = ctx.openFileInput(filename);
             int c;
 
 
