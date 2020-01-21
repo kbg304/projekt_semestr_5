@@ -23,8 +23,6 @@ public class AchivActivity extends AppCompatActivity {
 
         checkForAchievements();
 
-      //  frameLayout = (FrameLayout) findViewById(R.id.pierwszeKroki);
-      //  frameLayout.setAlpha(1);
         Button button = (Button) findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

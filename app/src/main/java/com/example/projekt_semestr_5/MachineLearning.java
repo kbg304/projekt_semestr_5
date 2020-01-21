@@ -25,7 +25,6 @@ public class MachineLearning
 
     public int getPrediction(float[] data)
     {
-        //float[] temp = new float[]{-0.051475335f, 9.563639f, 0.2669535f, -0.007078074f, 0.01732998f, 0.11274448f};
 
         float[][] result = predict(data);
 
@@ -49,10 +48,6 @@ public class MachineLearning
         return index;
 
     }
-
-    public void closeInterpreter()
-    {
-        tflite.close();
-    }
+    
 
 }

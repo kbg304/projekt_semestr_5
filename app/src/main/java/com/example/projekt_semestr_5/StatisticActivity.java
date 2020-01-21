@@ -38,7 +38,7 @@ public class StatisticActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                // if(button.getVisibility()==View.INVISIBLE)
+
 
             }
         });
@@ -51,7 +51,6 @@ public class StatisticActivity extends AppCompatActivity {
             sittingdata = Double.parseDouble(fileManager.open("sitting"));
             TextView sittingText = findViewById(R.id.textSitting);
             sittingText.setText(String.format("%.2f", sittingdata) + " godzin");}
-    //    }
         if(fileManager.open("standing") == "") { TextView standingText = findViewById(R.id.textStanding); standingText.setText("0 godzin"); }
         else{
             standingdata = Double.parseDouble(fileManager.open("standing"));

@@ -74,12 +74,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         beginActivButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  ImageView img = findViewById(R.id.imageActivity);
-              //  img.setImageResource(R.drawable.chair);
-
-              //  nameActivity ="Tu ma byc juz zapisana aktywnosc";
                 textActivity = findViewById(R.id.textActivity);
-              //  textActivity.setText(nameActivity);
 
                 beginActivButton.setVisibility(View.INVISIBLE);
                 endActivButton.setVisibility(View.VISIBLE);
@@ -89,10 +84,12 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
                 activityTime[2] = 0;
                 activityTime[3] = 0;
 
+                previousActivity = -1;
+
                 toastStart();
                 startSensorMeasurement();
                 startTime = System.currentTimeMillis();
-               // if(button.getVisibility()==View.INVISIBLE)
+
             }
         });
         endActivButton.setOnClickListener(new View.OnClickListener() {
@@ -165,25 +162,10 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
     @Override
     public void onBackPressed() {
-        // your code.
         stopSensorMeasurement();
         finish();
     }
 
-
-  //  @Override
-  //  public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-       // getMenuInflater().inflate(R.menu.main, menu);
-   //     return true;
-   // }
-
-  //  @Override
-   // public boolean onSupportNavigateUp() {
-       // NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-      //  return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-       //         || super.onSupportNavigateUp();
-   // }
 
 
 
@@ -207,7 +189,6 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
     public void stopSensorMeasurement()
     {
         sensorManager.unregisterListener(this);
-       // machineLearning.closeInterpreter();
     }
 
     @Override
@@ -243,16 +224,10 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         try
         {
 
-            //float[] test = new float[]{-0.051475335f, 9.563639f, 0.2669535f, -0.007078074f, 0.01732998f, 0.11274448f};
-
-
             MappedByteBuffer model = loadModelFile(getAssets(), modelFilename);
 
             machineLearning = new MachineLearning(model);
 
-            //int prediction = machineLearning.getPrediction(test);
-
-           // Log.d("wynik", Integer.toString(prediction));
 
         }
         catch (Exception ex)
