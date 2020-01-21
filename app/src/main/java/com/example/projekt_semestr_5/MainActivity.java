@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         mainmenu();
         fileManager = new FileManager(getApplicationContext());
         openMLModel();
-        
+
 
         beginActivButton = findViewById(R.id.begin_activ);
         endActivButton = findViewById(R.id.end_activ);
@@ -83,6 +83,11 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
 
                 beginActivButton.setVisibility(View.INVISIBLE);
                 endActivButton.setVisibility(View.VISIBLE);
+
+                activityTime[0] = 0;
+                activityTime[1] = 0;
+                activityTime[2] = 0;
+                activityTime[3] = 0;
 
                 toastStart();
                 startSensorMeasurement();
