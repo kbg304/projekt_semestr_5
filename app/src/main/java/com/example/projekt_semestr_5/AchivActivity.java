@@ -51,6 +51,8 @@ public class AchivActivity extends AppCompatActivity {
             if(tmp >= 0.17 || tmp2 >= 0.17)
             {
                 fileManager.save("pierwsze", "1");
+                frameLayout = (FrameLayout) findViewById(R.id.pierwszeKroki);
+                frameLayout.setAlpha(1);
             }
         }
 

@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity  implements SensorEventListe
         mainmenu();
         fileManager = new FileManager(getApplicationContext());
         openMLModel();
+        
 
         beginActivButton = findViewById(R.id.begin_activ);
         endActivButton = findViewById(R.id.end_activ);
